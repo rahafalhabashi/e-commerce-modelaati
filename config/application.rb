@@ -12,7 +12,8 @@ module ECommerceModelaati
     config.load_defaults 7.0
     config.api_only = true
     config.middleware.use ActionDispatch::Cookies 
-    config.middleware.use ActionDispatch::Sessions::CookieStore #stores everything on the client
+    config.middleware.use ActionDispatch::Session::CookieStore 
+    #stores everything on the client
 
     config.action_dispatch.cookies_same_site_protection = :strict
   end

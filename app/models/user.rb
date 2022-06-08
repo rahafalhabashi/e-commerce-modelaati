@@ -1,11 +1,13 @@
 class User < ApplicationRecord
+  has_secure_password
+
   has_many :reviews
   has_many :transactions
 
   validates_presence_of :email
   validates_uniqueness_of :email
   validates :name, presence: true, length: { maximum: 50 }
-  validates :password_digest, presence: true, length: { in: 6..20 }
+  validates :password_digest, presence: true
   validates :birthday, presence: true
 
   private

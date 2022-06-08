@@ -21,7 +21,7 @@ function Home() {
         return null;
     }
     return (
-        <div className="App">
+        <div className="page">
             <header className="App-header">
                 <p>
                     Welcome, warrior.

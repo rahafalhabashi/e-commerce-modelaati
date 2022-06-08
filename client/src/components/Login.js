@@ -1,15 +1,13 @@
 import React, {useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 
-function Login({setUser, handleLogin, setIsAuthenticated, cart, setCart}) {
+function Login({setUser, handleLogin, setIsAuthenticated, cart, setCart, setLoggedIn, loggedIn}) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
-
     
     const navigate = useNavigate()
     console.log(navigate)
-
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -29,6 +27,7 @@ function Login({setUser, handleLogin, setIsAuthenticated, cart, setCart}) {
                 setIsAuthenticated(true) 
                 navigate("/")
                 setCart(cart)
+                setLoggedIn(true)
               })
               
             } else {
@@ -64,7 +63,7 @@ function Login({setUser, handleLogin, setIsAuthenticated, cart, setCart}) {
                         />
                     </div>
                     <div>
-                        <input type="submit" />
+                        <button>Login</button>
                     </div>
                 </form>
             <div>

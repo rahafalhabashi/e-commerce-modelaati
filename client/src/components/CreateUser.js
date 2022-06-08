@@ -59,8 +59,8 @@ function CreateUser() {
             },
             body: JSON.stringify({
                 name: newName,
-                dob: birthdate,
                 email: newEmail,
+                birthday: birthdate,
                 password: newPassword,
                 password_digest: passwordConfirmation,
                 username: newUsername
@@ -123,7 +123,7 @@ function CreateUser() {
                 {successMessage()}
             </div>
                 <div>
-                    <form>
+                    <form onSubmit={handleNewUser}>
                         <div >
                             <label>Name </label>
                             <input type="text" name="name" value={newName} onChange={handleNewName} required />
@@ -143,10 +143,10 @@ function CreateUser() {
                             <input type="password" name="password" value={newPassword} onChange={handleNewPassword} required />
                             <br></br>
                             <label>Confirm Password: </label>
-                            <input type="password" name="password" value={passwordConfirmation} onChange={handlePassConfirmation} required />
+                            <input type="password_confirmation" name="password_confirmation" value={passwordConfirmation} onChange={handlePassConfirmation} required />
                         </div>
                         <div>
-                            <button className='nav-button' onClick={handleNewUser}> Create New Account! </button>
+                            <button className='nav-button' type="submit" > Create New Account! </button>
                         </div>
                     </form>
                 </div>
