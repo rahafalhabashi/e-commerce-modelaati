@@ -7,7 +7,8 @@ import Home from './Home';
 import Login from './Login';
 import CreateUser from './CreateUser';
 import OwnUserProfile from './OwnUserProfile';
-import ProductsList from './ProductsList';
+// import ProductsList from './ProductsList';
+// import Cart from './Cart';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -17,21 +18,6 @@ function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
 
-  // //Commerce object accesses the products.list() methos to access product data
-  // //in Chec product is returned in an object callled data
-  // const fetchProducts = (e) => {
-  //   commerce.products.list().then(products => {
-  //     setProducts(products.data)
-  //   }).catch(error => {
-  //     console.log('There was an error fetching the products', error)
-  //   })
-  // }
-  // //fecthes products when component first renders to DOM and anytime DOM updates; fetchProducts() being called updates the state with the returned products so we can render our updated data
-  // useEffect(() => {
-  //   fetchProducts()
-  // }, [])
-
-
   //Keeps user logged in
   useEffect(() => {
     fetch("/authorized_user").then((res) => {
@@ -39,23 +25,26 @@ function App() {
         res.json().then((user) => {
           setIsAuthenticated(true);
           setUser(user);
+          setLoggedIn(true)
           // setCart()
         });
       }
     })
-
+    //fetched products
+    fetch("/products")
+    .then((res) => res.json())
+      .then(products => setProducts(products))
   }, [])
 
-  useEffect(() => {
-    fetch("/products").then((res) => {
-      if (res.ok) {
-        res.json().then((products) => {
-          setProducts(products);
-        });
-      }
-    })
-  }, [user]);
-
+      
+      // if (res.ok) {
+      //   res.json()
+      //   .then((products) => {
+      //     setProducts(products);
+      //     console.log(products)
+      //   });
+      // }
+// console.log(products)
   function handleLogin() {
     setUser(user);
   }
@@ -63,8 +52,7 @@ function App() {
   function handleLogout() {
     setUser(null);
     setLoggedIn(false);
-    setProducts([])
-
+    setCart([])
   }
 
   return (
@@ -72,13 +60,11 @@ function App() {
     <div>
       <Navbar
         handleLogin={handleLogin}
-        handleLogout={handleLogout}
+        onLogout={handleLogout}
         loggedIn={loggedIn} />
-      <div>
-        <ProductsList />
-      </div>
+
       <Routes>
-        <Route path="/*" element={<Home />} />
+        <Route path="/*" element={<Home cart={cart} products={products}/>} />
         <Route path="login" element={<Login
               error={"Please login!"}
               handleLogin={handleLogin}
@@ -87,11 +73,14 @@ function App() {
               cart={cart}
               setCart={setCart} 
               setLoggedin={setLoggedIn}
-              loggedIn={loggedIn}/>} 
+              loggedIn={loggedIn}
+              user={user}/>} 
               />
         <Route path="create-user" element={<CreateUser />} />
         <Route path=":id" element={<OwnUserProfile isAuthenticated={isAuthenticated} />} />
-        <Route path="item/:itemId" element={<ProductsList cart={cart} products={products} />} />
+        {/* <Route path="/cart" element={<Cart cart={cart} />} /> */}
+
+        {/* <Route path="item/:itemId" element={} /> */}
       </Routes>
     </div>
     </div>

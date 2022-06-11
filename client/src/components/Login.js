@@ -1,13 +1,13 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 
-function Login({setUser, handleLogin, setIsAuthenticated, cart, setCart, setLoggedIn, loggedIn}) {
+function Login({ setUser, user, setIsAuthenticated, cart, setCart, setLoggedIn, loggedIn }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
-    
+
     const navigate = useNavigate()
-    console.log(navigate)
+    // console.log(navigate)
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -19,29 +19,30 @@ function Login({setUser, handleLogin, setIsAuthenticated, cart, setCart, setLogg
             },
             body: JSON.stringify({ username, password }),
         })
-        .then(res => {
-            if(res.ok){
-              res.json()
-              .then(user=>{
-                setUser(user)
-                setIsAuthenticated(true) 
-                navigate("/")
-                setCart(cart)
-                setLoggedIn(true)
-              })
-              
-            } else {
-              res.json()
-              .then(json => setError(json.error))
-            }
-          })
+            .then(res => {
+                if (res.ok) {
+                    res.json()
+                        .then(user => {
+                            setUser(user)
+                            setIsAuthenticated(true)
+                            navigate("/")
+                            setCart(cart)
+                            setLoggedIn(true)
+                        })
+                } else {
+                    res.json()
+                        .then(json => setError(json.error))
+                }
+            })
     }
+    console.log("Logged in?", loggedIn)
+    console.log("User:", user)
 
-
-  return (
-    <div className='form'>
-        <header className="App-header">
+    return (
+        <div className='form'>
+            <header className="App-header">
                 <h1>Welcome</h1>
+                <p>{loggedIn ? `${user.name} logged in` : "Not logged in"}</p>
                 <form onSubmit={handleSubmit}>
                     <div>
                         <label>Username </label>
@@ -66,16 +67,16 @@ function Login({setUser, handleLogin, setIsAuthenticated, cart, setCart, setLogg
                         <button>Login</button>
                     </div>
                 </form>
-            <div>
-                <p> Don't have an account? </p>
-                <Link to="/create-user">
-                    <button className='nav-button' type="button">Become a Warrior</button>
-                </Link>
-            </div>
+                <div>
+                    <p> Don't have an account? </p>
+                    <Link to="/create-user">
+                        <button className='nav-button' type="button">Become a Warrior</button>
+                    </Link>
+                </div>
             </header>
-            {error?<div>{error}</div>:null}
-    </div>
-  )
+            {error ? <div>{error}</div> : null}
+        </div>
+    )
 }
 
 export default Login
