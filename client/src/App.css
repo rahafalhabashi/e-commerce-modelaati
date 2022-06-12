@@ -1,30 +1,57 @@
-.App {
-  text-align: center;
-}
-
 
 .App-header {
-  background-color: beige;
-  min-height: 100vh;
-  display: flex;
+  background-color: rgb(231, 231, 196);
+  min-height: 10vh;
+  display: block;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: black;
+  color: transparent;
+  width: 100%;
+  margin-top: -0.5em;
+
+}
+
+.brand-logo {
+  height: 80px;
+  align-self:center ;
+  width: 80px;
+  margin: 0.5em 0em 0em 1em;;
+  border-radius: 50%;
+  box-sizing: border-box;
+  box-shadow: 7px 7px 10px #cbced1, -7px -7px -7px white;
+}
+
+.welcome {
+  font-family: 'Roboto', sans-serif;
+  font-weight:100;
+  font-size:70px;
+  font-style: italic;
+  font-stretch: extra-expanded;
+  color: rgb(8, 8, 41);
+  text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+  text-align: center;
+  margin-top: 20%;
+
 }
 
 .page {
   background-color: beige;
+  width: 100%;
+  height: 100%;
+  position: absolute;
 }
+
+/* position: fixed; */
 
 .popup {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height:100vh;
-  background-color: (0,0,0,0.2);
+  height: 100vh;
+  background-color: (0, 0, 0, 0.2);
 
   display: flex;
   justify-content: center;
@@ -36,7 +63,7 @@
   padding: 32px;
   width: 100%;
   max-width: 640px;
-  background-color:#fff
+  background-color: #fff
 }
 
 .popup-inner .close-btn {
@@ -45,3 +72,248 @@
   bottom: 16px;
 }
 
+.product__card {
+  margin-top: 0.25rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border: black;
+  border-radius: 10px;
+  font-size: 1.25rem;
+  font-weight: bold;
+  transition: all 0.3s;
+  border: 50% solid black;
+  word-wrap: normal;
+  width: 40%;
+  height: 100%;
+  align-content: center;
+  float: center;
+}
+
+.product__image {
+  width: 100%;
+  object-fit: cover;
+  padding: 50px;
+  margin: 10px;
+  border-radius: 15px;
+  background: whitesmoke;
+  padding: 5px;
+  width: 400px;
+  height: 400px;
+}
+
+
+.cards {
+  display: contents;
+  flex-wrap: wrap;
+  width: 90%;
+  height: 90%;
+  object-fit: cover;
+  /* background-color: #999; */
+  margin: 0px;
+  padding: 10px;
+  margin-left: 4%;
+  margin-right: 5%;
+  justify-content: space-between;
+}
+
+span {
+  width: 100%;
+  display: inline-block;
+  font-size: 0;
+  line-height: 0
+}
+
+* {
+  margin: 3px;
+  padding: 0em;
+  box-sizing: border-box;
+}
+.nav-button {
+  font-size: 20px;
+}
+
+
+
+.nav-button,
+.book-button {
+  display: inline-block;
+  gap: 1em;
+  padding: 0.3em 1.2em;
+  margin: 0.8em 0.8em 0.8em 0.8em;
+  border: 0.16em solid transparent;
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: rgb(8, 8, 41);
+  text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+  text-align: center;
+  transition: all 0.2s;
+  transition: cubic-bezier(0.19, 1, 0.22, 1);
+  background-color: transparent;
+  /* margin-left: 20%; */
+  /* margin-right: 10%; */
+  /* margin-inline-end: auto; */
+}
+
+.button {
+  display: inline-block;
+  gap: 1em;
+  padding: 0.3em 1.2em;
+  margin: 0.8em 0.8em 0.8em 0.8em;
+  border: 0.16em solid transparent;
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: rgb(8, 8, 41);
+  text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+  text-align: center;
+  transition: all 0.2s;
+  transition: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.nav-button:hover,
+.book-button:hover {
+  color: white;
+  background-color: rgb(8, 8, 41);
+  border-color: rgba(255, 255, 255, 1);
+}
+
+#formCss input {
+  caret-color: red;
+}
+
+.form-name {
+  align-self: center;
+  margin-left: 15%;
+  margin-bottom: 100px;
+  margin-block-end: auto;
+}
+
+.form-container body {
+  margin: 0;
+  font-size: large;
+  width: 100vw;
+  height: 100vh;
+  background: #ecf0f3;
+  /* display: flex; */
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  place-items: center;
+  /* overflow: hidden; */
+  font-family: poppins;
+}
+
+.form-container {
+  /* font-size: px; */
+  position: relative;
+  margin-left: auto;
+  width: 400px;
+  height: 100%;
+  margin: 6em 6em 6em 6em;
+  border-radius: 20px;
+  padding: 40px;
+  box-sizing: border-box;
+  background: beige;
+  box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+  align-items: center;
+  /* align: center; */
+}
+
+.create-user-container {
+  position: relative;
+  width: 350px;
+  height: auto;
+  margin: 6em 6em 6em 6em;
+  border-radius: 20px;
+  padding: 40px;
+  box-sizing: border-box;
+  background: beige;
+  box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+  align-items: center;
+}
+
+.brand-title {
+  margin-top: 10px;
+  align-items: center;
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: black;
+  letter-spacing: 1px;
+  /* margin-left: 50%; */
+  /* margin-right: 50%; */
+
+}
+
+.inputs {
+  text-align: left;
+  margin-top: 30px;
+  width: 100%;
+
+}
+
+label,
+input,
+button {
+  display: block;
+  width: auto;
+  padding: 10px;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+  align-self: center;
+  text-decoration: none;
+}
+
+label {
+  margin-bottom: 4px;
+  font-size: 30px;
+  text-align: center;
+}
+
+label:nth-of-type(2) {
+  margin-top: 12px;
+}
+
+input::placeholder {
+  color: gray;
+}
+
+input {
+  background: #ecf0f3;
+  padding: 10px;
+  padding-left: 20px;
+  height: 50px;
+  font-size: 14px;
+  border-radius: 50px;
+  box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
+  width: 100%;
+}
+
+.form-button {
+  color: black;
+  margin-top: 20px;
+  background: transparent;
+  height: 40px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 900;
+  box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
+  transition: 0.5s;
+  align-content: center;
+  width: 100%;
+}
+
+button:hover {
+  box-shadow: none;
+}
+
+h1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+}

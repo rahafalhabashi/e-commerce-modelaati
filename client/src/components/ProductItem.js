@@ -6,41 +6,47 @@ import React from 'react'
 // import Cart from './Cart'
 
 
-function ProductItem({ user, product, cart }) {
+function ProductItem({ user, product, cart, setCart }) {
     // const navigate = useNavigate()
 
-    const addProductToCart = {
-        user_id: user.id,
+    // const addProductToCart = {
+    //     // user_id: user.id,
+    //     name: user.name,
+    //     price: user.price
 
-    }
+    // }
 
     function handleAddToCart() {
-        fetch("/cart", {
+        fetch("/cartorder", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(addProductToCart),
+            body: JSON.stringify(product),
         })
-        .then(resp => resp.json())
+            .then(resp => resp.json())
+            .then(cartProds => setCart(cartProds))
         // navigate('/cart')
     }
     // console.log("hi")
     return (
         <div className="product__card">
-            <img className="product__image" src={product.img_url} alt={product.name} />
-            <div className="product__info">
-                <h4 className="product__name">{product.name}</h4>
-                <p className="product__description">
-                    {/* product description stripped of html tags */}
-                    {product.description}
-                </p>
-                <div className="product__details">
-                    <p className="product__price">
-                        {product.price}
+            <div className='cards'>
+                <img className="product__image" src={product.img_url} alt={product.name} />
+                <div className="product__info">
+                    <h4 className="product__name">{product.name}</h4>
+                    <p className="product__description">
+                        {/* product description stripped of html tags */}
+                        {/* {product.description} */}
                     </p>
-                    {/* <Routes>
+                    <div className="product__details">
+                        <p className="product__price">
+                            {product.price}
+                        </p>
+                        {/* <Routes>
                     </Routes> */}
 
-                    <button onClick={handleAddToCart}>Add to Cart</button>
+                        <button onClick={handleAddToCart} className={'form-button'}>Add to Cart  </button>
+                    </div>
+                    <br />
                 </div>
             </div>
         </div>

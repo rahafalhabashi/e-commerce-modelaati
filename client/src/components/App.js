@@ -9,6 +9,7 @@ import CreateUser from './CreateUser';
 import OwnUserProfile from './OwnUserProfile';
 // import ProductsList from './ProductsList';
 // import Cart from './Cart';
+import Checkout from './Checkout';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -61,10 +62,11 @@ function App() {
       <Navbar
         handleLogin={handleLogin}
         onLogout={handleLogout}
-        loggedIn={loggedIn} />
+        loggedIn={loggedIn}
+        setCart={setCart} />
 
       <Routes>
-        <Route path="/*" element={<Home cart={cart} products={products}/>} />
+        <Route path="/*" element={<Home user={user} cart={cart} setCart={setCart} products={products}/>} />
         <Route path="login" element={<Login
               error={"Please login!"}
               handleLogin={handleLogin}
@@ -78,6 +80,7 @@ function App() {
               />
         <Route path="create-user" element={<CreateUser />} />
         <Route path=":id" element={<OwnUserProfile isAuthenticated={isAuthenticated} />} />
+        <Route path="/checkout" element={<Checkout />} />
         {/* <Route path="/cart" element={<Cart cart={cart} />} /> */}
 
         {/* <Route path="item/:itemId" element={} /> */}

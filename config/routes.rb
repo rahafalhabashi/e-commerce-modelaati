@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :show]
   resources :sessions, only: [:create]
   resources :registrations, only: [:create]
+  resources :carts, only: [:index, :show]
 
   # delete :logout, to: "sessions#logout"
   # get :loggedIn, to: "sessions#loggedIn"
@@ -15,7 +16,8 @@ Rails.application.routes.draw do
   post "/signup", to: "users#create"
 
   post "/potato", to: "sessions#cat"
-  post "/cartorder", to: "user#order"
+  post "/cartorder", to: "users#openOrder"
+  get "/cart", to: "orders#show"
 
   # Products
   # get "/products", to: "products#index"

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import ProductsList from './ProductsList';
 
-function Home({cart, products}) {
+function Home({user, cart, setCart, products}) {
     const [show, setShow] = useState(true)
 
     // On componentDidMount set the timer
@@ -18,21 +18,22 @@ function Home({cart, products}) {
 
     // If show is false the component will return null and stop here
     if (!show) {
-        return <ProductsList cart={cart} products={products} />
+        return <ProductsList cart={cart} products={products} setCart={setCart} />
 
         // return null; 
     }
+    // console.log(user.name)
     return (
-        <div className="page">
-            <header className="App-header">
-                <p>
-                    Welcome, warrior.
+        <div className="page" align="center">
+            <header >
+                <p className="welcome">
+                Welcome, Warrior.
                 </p>
             </header>
 
-            <div className='App-header'>
+            {/* <div className='App-header'>
 
-            </div>
+            </div> */}
         </div>
     )
 }

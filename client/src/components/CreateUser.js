@@ -66,12 +66,13 @@ function CreateUser() {
                 username: newUsername
             })
         })
-        .then(res => 
-           { if(res.ok) {
-               res.json()
-               .then(user => setNewUsername(user))
-               return res.json().then(body => setNewUsername(body))
-            }})
+            .then(res => {
+                if (res.ok) {
+                    res.json()
+                        .then(user => setNewUsername(user))
+                    return res.json().then(body => setNewUsername(body))
+                }
+            })
 
         if (newName === '' || newEmail === '' || newPassword === '' || birthdate === undefined) {
             e.preventDefault();
@@ -80,12 +81,12 @@ function CreateUser() {
             setSubmitted(true);
             setError(false);
         }
-        
-            setNewName('')
-            setNewEmail('')
-            setNewUsername('')
-            setBirthdate('')
-            setPasswordConfirmation('')
+
+        setNewName('')
+        setNewEmail('')
+        setNewUsername('')
+        setBirthdate('')
+        setPasswordConfirmation('')
 
     };
 
@@ -116,42 +117,38 @@ function CreateUser() {
     }
 
     return (
-        <div className="App">
-            <div className="App-header">
-            <div style={{fontSize: 10, color: 'red'}}>
-                {errorMessage()}
-                {successMessage()}
-            </div>
-                <div>
-                    <form onSubmit={handleNewUser}>
-                        <div >
-                            <label>Name </label>
-                            <input type="text" name="name" value={newName} onChange={handleNewName} required />
-                            <br></br>
-                            <label>Email </label>
-                            <input type="text" name="email" value={newEmail} onChange={handleNewEmail} required />
-                            <br></br>
-                            <label>Username </label>
-                            <input type="text" name="username" value={newUsername} onChange={handleNewUsername} required />
-                            <br></br>
-                            <label>Birthday </label>
-                            <input type="date" name="birthday" value={birthdate} onChange={handleNewBirthdate} required />
-                            <br></br>
-                        </div>
-                        <div>
-                            <label>Create Password: </label>
-                            <input type="password" name="password" value={newPassword} onChange={handleNewPassword} required />
-                            <br></br>
-                            <label>Confirm Password: </label>
-                            <input type="password_confirmation" name="password_confirmation" value={passwordConfirmation} onChange={handlePassConfirmation} required />
-                        </div>
-                        <div>
-                            <button className='nav-button' type="submit" > Create New Account! </button>
-                        </div>
-                    </form>
+        <div align="center">
+            <form className="form-container" onSubmit={handleNewUser}>
+                <div style={{ fontSize: 10, color: 'red' }}>
+                    {errorMessage()}
+                    {successMessage()}
                 </div>
-
-            </div>
+                <div >
+                    <h1 className='form-name'>Create New Account</h1>
+                    <label>Name </label>
+                    <input type="text" name="name" value={newName} onChange={handleNewName} required />
+                    <br></br>
+                    <label>Email </label>
+                    <input type="text" name="email" value={newEmail} onChange={handleNewEmail} required />
+                    <br></br>
+                    <label>Username </label>
+                    <input type="text" name="username" value={newUsername} onChange={handleNewUsername} required />
+                    <br></br>
+                    <label>Birthday </label>
+                    <input type="date" name="birthday" value={birthdate} onChange={handleNewBirthdate} required />
+                    <br></br>
+                </div>
+                <div>
+                    <label>Create Password: </label>
+                    <input type="password" name="password" value={newPassword} onChange={handleNewPassword} required />
+                    <br></br>
+                    <label>Confirm Password: </label>
+                    <input type="password_confirmation" name="password_confirmation" value={passwordConfirmation} onChange={handlePassConfirmation} required />
+                </div>
+                <div>
+                    <button className='form-button' type="submit" > Create New Account! </button>
+                </div>
+            </form>
         </div>
     )
 }
