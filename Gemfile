@@ -51,3 +51,7 @@ gem "bcrypt", "~> 3.1"
 
 gem 'active_model_serializers'
 
+
+gem "stripe", "~> 6.3"
+
+gem "dotenv", "~> 2.7"

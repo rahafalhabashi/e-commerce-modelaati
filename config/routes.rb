@@ -15,9 +15,12 @@ Rails.application.routes.draw do
   get "/users", to: "users#index"
   post "/signup", to: "users#create"
 
-  post "/potato", to: "sessions#cat"
-  post "/cartorder", to: "users#openOrder"
+  # post "/potato", to: "sessions#cat"
+  post "/cartorder", to: "users#userOrder"
   get "/cart", to: "orders#show"
+
+  # STRIPE ROUTES
+  post "/charges", to: 'charges#create'
 
   # Products
   # get "/products", to: "products#index"

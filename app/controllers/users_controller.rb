@@ -14,14 +14,10 @@ class UsersController < ApplicationController
   end
 
   def userOrder
-    order = Order.where(checked_out = false).first
-    if order
-      # order = Order.find(params[:checked_out == false])
-      render json: order.cart.products
-    else
-      order = Order.create(order_params)
-      render json: order.cart.products
-    end
+    # debugger
+    p = Product.find_by(id: params[:id])
+    cp = current_user.cart.products << p
+    render json: current_user.cart.products
   end
 
   def create
@@ -55,5 +51,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.permit(:name, :email, :birthday, :password, :username)
+  end
+
+  def order_params
+    params.permit(:checked_out, :user_id)
   end
 end

@@ -3,6 +3,25 @@ class User < ApplicationRecord
 
   has_many :orders
 
+  def order
+    self.orders.find_by(checked_out: false)
+  end
+
+  def cart 
+    ord = self.order
+    if ord 
+      return ord.cart 
+    else 
+      o = Order.new
+      o.checked_out = false
+      c = Cart.new
+      o.cart = c
+      self.orders << o 
+      return c 
+    end
+
+  end
+
 # def cart
 #   open_order = Order.find_by!(checked_out: false)
 #   if(open_order == nil) {

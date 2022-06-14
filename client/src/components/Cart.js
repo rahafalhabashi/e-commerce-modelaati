@@ -1,32 +1,31 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
-function Cart({ cart, setCart, trigger, setTrigger, children }) {
-  // useEffect(() => {
-  //   fetch('/cart')
-  //   .then(resp => resp.json())
-  //   .then(cart => setCart(cart))
-  // })
+function Cart({ cart, setCart, trigger, setTrigger, prod }) {
+  let navigate = useNavigate()
+  
 
+  function handleCheckout() {
+    navigate('/checkout')
+  }
 
+  console.log(prod)
 
-  return (trigger) ? (
-    <div className='popup'>
-      <div className='popup-inner'>
-        <button className='close-btn' onClick={() => setTrigger(false)}>Close</button>
+  return (
+    <div>
+      <div >
+        <p>hi</p>
         <div>
-          {cart.map(prod => { 
-            <div>
-              <img src={prod.img_url} alt={prod.name} ></img>
-              <p>{prod.name}</p>
-              <p>{prod.price}</p>
-
-            </div>
-          })}
-          {/* {user.cart_products} */}
+          <img src={prod.img_url} alt={prod.name} ></img>
+          </div>
+          <div>
+          <p>{prod.name}</p>
+          <p>${prod.price}</p>
         </div>
+        <button onClick={handleCheckout}>Checkout</button>
       </div>
     </div>
-  ) : <div></div>
+  )
 }
 
 export default Cart

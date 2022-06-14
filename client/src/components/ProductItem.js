@@ -7,15 +7,6 @@ import React from 'react'
 
 
 function ProductItem({ user, product, cart, setCart }) {
-    // const navigate = useNavigate()
-
-    // const addProductToCart = {
-    //     // user_id: user.id,
-    //     name: user.name,
-    //     price: user.price
-
-    // }
-
     function handleAddToCart() {
         fetch("/cartorder", {
             method: 'POST',
@@ -23,30 +14,32 @@ function ProductItem({ user, product, cart, setCart }) {
             body: JSON.stringify(product),
         })
             .then(resp => resp.json())
-            .then(cartProds => setCart(cartProds))
-        // navigate('/cart')
+            .then(cartProds => {
+                setCart(cartProds)
+                // console.log(cart)
+                // console.log(product)
+                console.log(cart)
+            })
     }
-    // console.log("hi")
     return (
-        <div className="product__card">
+        <div className="cards__item">
             <div className='cards'>
                 <img className="product__image" src={product.img_url} alt={product.name} />
-                <div className="product__info">
-                    <h4 className="product__name">{product.name}</h4>
-                    <p className="product__description">
-                        {/* product description stripped of html tags */}
-                        {/* {product.description} */}
-                    </p>
-                    <div className="product__details">
-                        <p className="product__price">
-                            {product.price}
+                <div className="product__card">
+                    <div className="product__info">
+                        <h4 className="product__name">{product.name}</h4>
+                        <p className="product__description">
+                            {/* product description stripped of html tags */}
+                            {/* {product.description} */}
                         </p>
-                        {/* <Routes>
-                    </Routes> */}
+                        <div className="product__details">
+                            <p className="product__price">
+                                ${product.price}
+                            </p>
+                            <button onClick={handleAddToCart} className={'form-button'}>Add to Cart  </button>
+                        </div>
 
-                        <button onClick={handleAddToCart} className={'form-button'}>Add to Cart  </button>
                     </div>
-                    <br />
                 </div>
             </div>
         </div>
