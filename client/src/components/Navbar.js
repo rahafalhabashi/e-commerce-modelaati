@@ -1,15 +1,18 @@
 // import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
 import Logo from './modelaatilogo.png'
+import {useNavigate} from 'react-router-dom'
 // import Cart from './Cart'
 
 function Navbar({ loggedIn, onLogout, setCart }) {
     // const [btnPopup, setBtnPopup] = useState(false)
+    const navigate = useNavigate()
 
     function handleLogout() {
         fetch("/logout", {
             method: "DELETE",
         }).then(() => onLogout());
+        navigate('/')
     }
 
     return (
@@ -22,7 +25,7 @@ function Navbar({ loggedIn, onLogout, setCart }) {
                 <Link to="/Login"><button className='nav-button'>Login</button></Link>
                 <button className='nav-button' onClick={handleLogout} >Logout</button>
                 <Link to="/Shop"><button className='nav-button'>Shop</button></Link>
-                <Link to="/cart"><button className='nav-button'>Cart</button></Link>
+                <button className='nav-button' onClick={() => navigate('/cart')} >Cart</button>
                 {/* onClick={() => setBtnPopup(true)} */}
                 
                 {/* // trigger={btnPopup} setTrigger={setBtnPopup} */}

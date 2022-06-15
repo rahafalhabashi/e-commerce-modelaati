@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+    # skip_before_action :index
     def index
         products = Product.all
         render json: products
@@ -14,10 +15,19 @@ class ProductsController < ApplicationController
     #     render json: product, status: :created 
     # end
 
-    def addPrToCr
+    # def addPrToCr
         # newCI = Product.show
         # Cart.self.products << newCI
-    end
+    # end
+
+    # def destroy
+    #     prod = Product.find(params[:id])
+    #     if prod.destroy
+    #       head :no_content
+    #     else
+    #       render json: { error: "product not found" }, status: 422
+    #     end
+    # end
 
     private 
     def product_params 

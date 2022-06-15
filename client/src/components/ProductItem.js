@@ -7,7 +7,11 @@ import React from 'react'
 
 
 function ProductItem({ user, product, cart, setCart }) {
+
+    // const navigate = useNavigate()
+
     function handleAddToCart() {
+   
         fetch("/cartorder", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -36,7 +40,11 @@ function ProductItem({ user, product, cart, setCart }) {
                             <p className="product__price">
                                 ${product.price}
                             </p>
-                            <button onClick={handleAddToCart} className={'form-button'}>Add to Cart  </button>
+                            {/* {user ? */}
+                            {/* <button onClick={() => navigate('/login')} style={{fontSize: '20px', fontColor: 'black', outline: 'black'}} >Please login to add to cart</button> */}
+                            {/* : */}
+                            <button  onClick={handleAddToCart} className={'form-button'}>Add to Cart  </button>
+{/* } */}
                         </div>
 
                     </div>

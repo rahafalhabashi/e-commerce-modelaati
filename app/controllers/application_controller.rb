@@ -3,11 +3,10 @@ class ApplicationController < ActionController::API
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
   
   include ActionController::Cookies
-  # before_action :carts
   # include ActionController::Serialization
 
   #   runs before every function unless skipped (when logging in and signing up)
-  before_action :authorized
+#   before_action :authorized
   include ActionController::Cookies
   # gives access to use cookies to all our controlers
   def authorized

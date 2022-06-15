@@ -1,3 +1,4 @@
+html {background-color: beige}
 
 .App-header {
   background-color: rgb(231, 231, 196);
@@ -37,9 +38,9 @@
 }
 
 .page {
-  background-color: beige;
+  /* background-color: beige; */
   width: 100%;
-  height: 100%;
+  height:fit-content;
   position: absolute;
 }
 
@@ -77,11 +78,10 @@
   
 }
 
-* {
+/* * {
   margin: 3px;
   padding: 0em;
-  box-sizing: border-box;
-}
+} */
 
 .product__card {
   margin-top: 0.25rem;
@@ -138,6 +138,14 @@
 
 }
 
+.card-form-expiration-button {
+  width: 100px;
+}
+
+.side-by-side {
+  display: flex;
+  flex-direction: row;
+}
 
 .cards {
   display: contents;
@@ -152,21 +160,22 @@
   margin-right: 5%;
   justify-content: space-between;
   display: inline-block;
-
+  box-sizing: border-box;
 }
 
 span {
   width: 100%;
   display: inline-block;
-  font-size: 0;
-  line-height: 0
+  font-size: 5;
+  line-height: 0;
+  color:black
 }
 
-* {
+/* * {
   margin: 3px;
   padding: 0em;
   box-sizing: border-box;
-}
+} */
 .nav-button {
   font-size: 20px;
 }
@@ -232,6 +241,16 @@ span {
   margin-block-end: auto;
 }
 
+.no-cart-text {
+  align-self: center;
+  justify-content: center;
+  display: flex;
+
+  /* margin-left: 15%; */
+  /* margin-bottom: 100px; */
+  /* margin-block-end: auto; */
+}
+
 .form-container body {
   margin: 0;
   font-size: large;
@@ -287,6 +306,50 @@ span {
   /* margin-right: 50%; */
 
 }
+
+/* Payment Form */
+.payment-name {
+  align-self: center;
+  margin-left: 15%;
+  margin-bottom: 100px;
+  margin-block-end: auto;
+}
+
+.payment-form-container body {
+  margin: 0;
+  font-size: large;
+  width: 100vw;
+  height: 100vh;
+  background: #ecf0f3;
+  /* display: flex; */
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  place-items: center;
+  /* overflow: hidden; */
+  font-family: poppins;
+  text-align: center;
+}
+
+.payment-container {
+  /* font-size: px; */
+  position: relative;
+  margin-left: auto;
+  width: auto;
+  height: 100%;
+  margin: 6em 6em 6em 6em;
+  border-radius: 20px;
+  padding: 40px;
+  box-sizing: border-box;
+  background: beige;
+  box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+  align-items: center;
+  display: inline-block;
+  /* align: center; */
+}
+
+
+
 
 .inputs {
   text-align: left;
@@ -344,7 +407,7 @@ input {
   box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
   transition: 0.5s;
   align-content: center;
-  width: 100%;
+  /* width: 100%; */
 }
 
 button:hover {
@@ -356,3 +419,57 @@ h1 {
   top: 0;
   left: 0;
 }
+
+.cart-image {
+  width: 100%;
+  object-fit: cover;
+  padding: 50px;
+  margin: 10px;
+  border-radius: 15px;
+  background: whitesmoke;
+  padding: 5px;
+  width: 200px;
+  height: 200px;
+}
+
+.cart-card {
+  height:fit-content;
+  width:50px;
+  padding: 10px;
+  justify-content: space-between;
+  margin-right: 10%;
+  /* display: contents; */
+  /* padding-left: 200px; */
+  margin: 20px;
+  width:min-content;
+
+
+}
+
+.cart-card-button {
+  color: black;
+  margin-top: 20px;
+  background: transparent;
+  height: 40px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 900;
+  box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
+  transition: 0.5s;
+  align-content: center;
+  width: 700px;
+  /* box-sizing: border-box; */
+}
+/* 
+display: contents;
+  flex-wrap: wrap;
+  width: 90%;
+  height: 90%;
+  object-fit: cover;
+  /* background-color: #999; */
+  /* margin: 0px;
+  padding: 10px; */
+  /* margin-left: 4%;
+  margin-right: 5%;
+  justify-content: space-between;
+  display: inline-block; */ 

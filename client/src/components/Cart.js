@@ -1,29 +1,67 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+// import Login from './Login'
 
-function Cart({ cart, setCart, trigger, setTrigger, prod }) {
+function Cart({ cart, setCart, cartProds, setCartProds, user }) {
+  // const [showCart, setShowCart] = useState(false)
   let navigate = useNavigate()
-  
+
 
   function handleCheckout() {
     navigate('/checkout')
   }
 
-  console.log(prod)
+  function handleDeleteProd(id) {
+    fetch(`/cart_products/${id}`, {
+      method: 'DELETE',
+      header: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(resp => resp.json())
+      .then(() => onProdDelete(id))
+      .then(console.log(id))
+  }
+
+  function onProdDelete(id) {
+    const updatedProds = cartProds.filter(prod => (
+      prod.id !== id
+    ))
+    setCartProds(updatedProds)
+    console.log()
+  }
+
+
+
+  console.log(cartProds)
 
   return (
     <div>
-      <div >
-        <p>hi</p>
+    {user ? 
+      <div>
         <div>
-          <img src={prod.img_url} alt={prod.name} ></img>
-          </div>
-          <div>
-          <p>{prod.name}</p>
-          <p>${prod.price}</p>
+          <h2 align="center" >Cart</h2>
+          {cartProds.map((prod, id) => (
+            // <div className='cards__item'>
+            <div className='cart-card' >
+              <img src={prod.img_url} alt={prod.name} key={prod.id} className='cart-image' ></img>
+              <p>{prod.name}</p>
+              <p>${prod.price}</p>
+              <button className='cart-card-button' align='center' style={{ width: 'auto' }} onClick={() => handleDeleteProd(prod.id)} >remove from cart</button>
+              {/* <p>Total: {parseInt(prod.price, 10)}.sum}</p> */}
+            </div>
+            // </div>
+          ))}
+          {/* <p>Total: {cartProds.parseInt.sum}</p> */}
+          <button className="cart-card-button" align="center" onClick={handleCheckout} >Checkout</button>
         </div>
-        <button onClick={handleCheckout}>Checkout</button>
       </div>
+      :
+      <div align="center">
+      <h2 className="no-cart-text">Please login to view cart.</h2>
+      <button onClick={() => navigate('/login')}>Login</button>
+      </div>
+            }
     </div>
   )
 }

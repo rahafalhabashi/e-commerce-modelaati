@@ -37,14 +37,17 @@ function App() {
       .then((res) => res.json())
       .then(products => setProducts(products))
 
-    //fetch user cart
+
+  }, [])
+
+  useEffect(() => {
     fetch('/cart')
       .then((res) => res.json())
       .then(cartProds => setCartProds(cartProds))
+  }, [cart])
+  // console.log(cartProds)
 
-    }, [])
-    console.log(cartProds)
-
+  //fetch user cart
 
   // console.log(products)
   function handleLogin() {
@@ -57,6 +60,8 @@ function App() {
     setCart([])
   }
 
+
+console.log('user:', user)
   return (
     <div className='page'>
       <div>
@@ -72,6 +77,7 @@ function App() {
             error={"Please login!"}
             handleLogin={handleLogin}
             setUser={setUser}
+            isAuthenticated={isAuthenticated}
             setIsAuthenticated={setIsAuthenticated}
             cart={cart}
             setCart={setCart}
@@ -82,9 +88,9 @@ function App() {
           <Route path="create-user" element={<CreateUser />} />
           <Route path="/my-profile" element={<OwnUserProfile isAuthenticated={isAuthenticated} />} />
           <Route path="/checkout" element={<Checkout />} />
-          {cartProds.map((prod) => (
-            <Route path="/cart" element={<Cart key={prod.id} cart={cart} setCart={setCart} product={products} prod={prod} />} />
-          ))}
+          {/* {cartProds.map((prod) => ( */}
+          <Route path="/cart" element={<Cart user={user} cartProds={cartProds} setCartProds={setCartProds} cart={cart} setCart={setCart} product={products} />} />
+          {/* ))} */}
         </Routes>
       </div>
     </div>

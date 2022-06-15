@@ -4,6 +4,9 @@ class OrdersController < ApplicationController
     render json: orders
   end
 
+  # def
+    
+
   def show
     render json: current_user.cart.products
     

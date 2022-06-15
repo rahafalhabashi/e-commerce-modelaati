@@ -22,7 +22,7 @@ function Home({user, cart, setCart, products}) {
 
         // return null; 
     }
-    // console.log(user.name)
+    // console.log(user)
     return (
         <div className="page" align="center">
             <header >

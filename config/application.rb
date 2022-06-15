@@ -8,7 +8,6 @@ Bundler.require(*Rails.groups)
 
 module ECommerceModelaati
   class Application < Rails::Application
-    # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
     config.api_only = true
     config.middleware.use ActionDispatch::Cookies 
@@ -16,5 +15,8 @@ module ECommerceModelaati
     #stores everything on the client
 
     config.action_dispatch.cookies_same_site_protection = :strict
+    config.eager_load_paths << Rails.root.join("app/services")
+    
+    autoloaders.main.ignore(Rails.root.join('app/node_modules'))
   end
 end

@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   post "/charges", to: 'charges#create'
 
   # Products
+  delete "/cart_products/:id", to: "users#delete_cart_product"
   # get "/products", to: "products#index"
 
 end

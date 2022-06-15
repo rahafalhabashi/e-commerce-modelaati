@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  # skip_before_action :authorized, only: [:index, :create]
+
   def index
     users = User.all
     render json: users
@@ -20,6 +22,18 @@ class UsersController < ApplicationController
     render json: current_user.cart.products
   end
 
+  def delete_cart_product
+    # debugger
+    cp = current_user.cart.cart_products
+    pr = cp.find_by(product_id: params[:id])
+    if pr
+      pr.destroy
+      head :no_content
+    else
+      render json: { error: "product not found" }, status: 404
+    end
+  end
+# attribute of instance im finding by: params[:]
   def create
     user = User.create!(user_params)
     if user

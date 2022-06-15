@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 
-function Login({ setUser, user, setIsAuthenticated, cart, setCart, setLoggedIn, loggedIn }) {
+function Login({ setUser, user, isAuthenticated, setIsAuthenticated, cart, setCart, setLoggedIn, loggedIn }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
@@ -25,25 +25,30 @@ function Login({ setUser, user, setIsAuthenticated, cart, setCart, setLoggedIn, 
                         .then(user => {
                             setUser(user)
                             setIsAuthenticated(true)
-                            navigate("/")
                             setCart(cart)
                             setLoggedIn(true)
+                            navigate("/")
                         })
+                    // navigate.push("/")
                 } else {
                     res.json()
                         .then(json => setError(json.error))
                 }
             })
+        // navigate('/')
     }
     console.log("Logged in?", loggedIn)
     console.log("User:", user)
 
     return (
         <div align="center" >
+            {user ? 
+            <h2 style={{ color: 'black', lineHeight: .5, padding: 1, fontWeight: 'bold', fontStyle: 'italic' }}>{`${user.name} is logged in`}</h2>            
+                // <p >{loggedIn ? `${user.name} logged in` : "Not logged in"}</p>
+            :
             <form className='form-container' onSubmit={handleSubmit}>
-            <h1 className='form-name'>Please login below.</h1>
-            <br></br>
-            <p style={{ color: 'black', lineHeight: .5, padding: 1, fontWeight: 'bold', fontStyle: 'italic' }}>{loggedIn ? `${user.name} logged in` : "Not logged in"}</p>
+                <h1 className='form-name'>Please login below.</h1>
+                <br></br>
                 <div className='inputs'>
                     <label>Username </label>
                     <input
@@ -65,15 +70,17 @@ function Login({ setUser, user, setIsAuthenticated, cart, setCart, setLoggedIn, 
                 </div>
                 <div>
                     <button className='form-button'>Login</button>
+                    {/* onClick={() => navigate('/')} */}
                 </div>
                 <br></br>
-            <label style={{fontSize: "20px", padding: "0px"}}> Don't have an account? </label>
-            <Link to="/create-user">
-                <button className='form-button'>Become a Warrior</button>
-            </Link>
+                <label style={{ fontSize: "20px", padding: "0px" }}> Don't have an account? </label>
+                <Link to="/create-user">
+                    <button className='form-button'>Become a Warrior</button>
+                </Link>
 
-            {error ? <div>{error}</div> : null}
+                {error ? <div>{error}</div> : null}
             </form>
+}
         </div>
     )
 }
