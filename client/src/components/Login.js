@@ -27,15 +27,17 @@ function Login({ setUser, user, isAuthenticated, setIsAuthenticated, cart, setCa
                             setIsAuthenticated(true)
                             setCart(cart)
                             setLoggedIn(true)
-                            navigate("/")
+                            // navigate("/")
                         })
                     // navigate.push("/")
                 } else {
                     res.json()
                         .then(json => setError(json.error))
                 }
-            })
-        // navigate('/')
+            },
+            
+            // navigate.push('/')
+            )
     }
     console.log("Logged in?", loggedIn)
     console.log("User:", user)

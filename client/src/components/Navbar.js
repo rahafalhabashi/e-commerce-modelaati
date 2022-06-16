@@ -24,7 +24,7 @@ function Navbar({ loggedIn, onLogout, setCart }) {
                 <Link to="/"><button className='nav-button'>Home</button></Link>
                 <Link to="/Login"><button className='nav-button'>Login</button></Link>
                 <button className='nav-button' onClick={handleLogout} >Logout</button>
-                <Link to="/Shop"><button className='nav-button'>Shop</button></Link>
+                {/* <Link to="/Shop"><button className='nav-button'>Shop</button></Link> */}
                 <button className='nav-button' onClick={() => navigate('/cart')} >Cart</button>
                 {/* onClick={() => setBtnPopup(true)} */}
                 

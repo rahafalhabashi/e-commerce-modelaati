@@ -36,8 +36,6 @@ function App() {
     fetch("/products")
       .then((res) => res.json())
       .then(products => setProducts(products))
-
-
   }, [])
 
   useEffect(() => {
@@ -61,7 +59,7 @@ function App() {
   }
 
 
-console.log('user:', user)
+// console.log('user:', user)
   return (
     <div className='page'>
       <div>
@@ -88,9 +86,7 @@ console.log('user:', user)
           <Route path="create-user" element={<CreateUser />} />
           <Route path="/my-profile" element={<OwnUserProfile isAuthenticated={isAuthenticated} />} />
           <Route path="/checkout" element={<Checkout />} />
-          {/* {cartProds.map((prod) => ( */}
           <Route path="/cart" element={<Cart user={user} cartProds={cartProds} setCartProds={setCartProds} cart={cart} setCart={setCart} product={products} />} />
-          {/* ))} */}
         </Routes>
       </div>
     </div>

@@ -8,6 +8,7 @@ class OrdersController < ApplicationController
     
 
   def show
+    # debugger
     render json: current_user.cart.products
     
     # order = Order.find_by(id: session[:user_id], checked_out: false)

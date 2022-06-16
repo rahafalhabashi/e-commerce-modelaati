@@ -24,7 +24,7 @@ import reportWebVitals from './reportWebVitals';
 //     const payment = await stripe.paymentIntents.create({
 //       amount,
 //       currency: "USD",
-//       description: "insert description",
+//       description: "Your order is being prepared!",
 //       payment_method: id,
 //       confirm: true
 //     })

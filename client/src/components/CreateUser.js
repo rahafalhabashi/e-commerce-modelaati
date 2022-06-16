@@ -125,6 +125,7 @@ function CreateUser() {
                 </div>
                 <div >
                     <h1 className='form-name'>Create New Account</h1>
+                    <br></br>
                     <label>Name </label>
                     <input type="text" name="name" value={newName} onChange={handleNewName} required />
                     <br></br>

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create]
   resources :registrations, only: [:create]
   resources :carts, only: [:index, :show]
+  resources :cart_products, only: [:index]
 
   # delete :logout, to: "sessions#logout"
   # get :loggedIn, to: "sessions#loggedIn"

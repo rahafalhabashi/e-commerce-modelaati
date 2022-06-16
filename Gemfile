@@ -56,3 +56,4 @@ gem 'active_model_serializers'
 
 gem 'dotenv-rails'
 gem 'stripe'
+gem "net-http", "~> 0.2.2"

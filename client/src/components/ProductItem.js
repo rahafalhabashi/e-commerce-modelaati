@@ -18,8 +18,8 @@ function ProductItem({ user, product, cart, setCart }) {
             body: JSON.stringify(product),
         })
             .then(resp => resp.json())
-            .then(cartProds => {
-                setCart(cartProds)
+            .then(cart => {
+                setCart(cart)
                 // console.log(cart)
                 // console.log(product)
                 console.log(cart)

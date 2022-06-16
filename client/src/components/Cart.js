@@ -18,9 +18,8 @@ function Cart({ cart, setCart, cartProds, setCartProds, user }) {
         "Content-Type": "application/json"
       }
     })
-      .then(resp => resp.json())
+      // .then(resp => console.log(resp.json()))
       .then(() => onProdDelete(id))
-      .then(console.log(id))
   }
 
   function onProdDelete(id) {
@@ -37,31 +36,30 @@ function Cart({ cart, setCart, cartProds, setCartProds, user }) {
 
   return (
     <div>
-    {user ? 
-      <div>
+      {user ?
         <div>
-          <h2 align="center" >Cart</h2>
-          {cartProds.map((prod, id) => (
-            // <div className='cards__item'>
-            <div className='cart-card' >
-              <img src={prod.img_url} alt={prod.name} key={prod.id} className='cart-image' ></img>
-              <p>{prod.name}</p>
-              <p>${prod.price}</p>
-              <button className='cart-card-button' align='center' style={{ width: 'auto' }} onClick={() => handleDeleteProd(prod.id)} >remove from cart</button>
-              {/* <p>Total: {parseInt(prod.price, 10)}.sum}</p> */}
-            </div>
-            // </div>
-          ))}
-          {/* <p>Total: {cartProds.parseInt.sum}</p> */}
-          <button className="cart-card-button" align="center" onClick={handleCheckout} >Checkout</button>
+          <div>
+            <h2 align="center" >Cart</h2>
+            {cartProds.map((prod, id) => (
+              // <div className='cards__item'>
+              <div className='cart-card' >
+                <img src={prod.img_url} alt={prod.name} key={prod.id} className='cart-image' ></img>
+                <p>{prod.name}</p>
+                <p>${prod.price}</p>
+                <button className='cart-card-button' align='center' style={{ width: 'auto' }} onClick={() => handleDeleteProd(prod.id)} >remove from cart</button>
+                {/* <p>Total: {parseInt(prod.price, 10)}.sum}</p> */}
+              </div>
+              // </div>
+            ))}
+            <button className="cart-card-button" align="center" onClick={handleCheckout} >Checkout</button>
+          </div>
         </div>
-      </div>
-      :
-      <div align="center">
-      <h2 className="no-cart-text">Please login to view cart.</h2>
-      <button onClick={() => navigate('/login')}>Login</button>
-      </div>
-            }
+        :
+        <div align="center">
+          <h2 className="no-cart-text">Please login to view cart.</h2>
+          <button className='form-button' onClick={() => navigate('/login')}>Login</button>
+        </div>
+      }
     </div>
   )
 }
