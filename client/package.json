@@ -21,8 +21,11 @@
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "react-stripe-checkout": "^2.6.3",
+    "react-toastify": "^9.0.4",
     "string-strip-html": "^9.1.12",
-    "stripe": "^9.8.0",
+    "stripe": "^9.9.0",
+    "uuid": "^8.3.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

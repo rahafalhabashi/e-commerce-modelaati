@@ -2,7 +2,7 @@ import React from 'react'
 // import PropTypes from 'prop-types';
 import ProductItem from './ProductItem';
 
-function ProductsList({ products, cart, setCart }) {
+function ProductsList({ user, products, cart, setCart, setCartProds, cartProds }) {
     // console.log("hey")
     //loops through ProductItem component 
     return (
@@ -13,6 +13,9 @@ function ProductsList({ products, cart, setCart }) {
                     product={product}
                     cart={cart}
                     setCart={setCart}
+                    user={user}
+                    setCartProds={setCartProds}
+                    cartProds={cartProds}
                 />
             ))}
         </div>

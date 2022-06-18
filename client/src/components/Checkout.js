@@ -1,23 +1,49 @@
 import React from 'react'
-import StripeContainer from './StripeContainer'
+// import StripeContainer from './StripeContainer'
+// import StripeLogo from './stripe_button.png'
+import StripeCheckout from 'react-stripe-checkout'
+import axios from 'axios'
 // import StripeContainer from './StripeContainer'
 // import { CardElement } from '@stripe/react-stripe-js'
 // import {useHistory} from 'react-router-dom'
 // import CardElement from './CardElement'
 
-function Checkout() {
+function Checkout({ cartProds }) {
   // <CardElement />
+  const prodInCart = cartProds.map((product) => (
+    <p> {product} </p>
+  ))
+  // const [product] = useState({
+  //   name: prodInCart.name,
+  //   price: prodInCart.amount ,
+  //   description: prodInCart.description,
+  // })
+
+  function handleToken(token, addresses) {
+    const response = axios.post('/checkout', { token, prodInCart })
+    console.log(response.status)
+  }
+
   return (
     <div>
-      <div className="cards__item" align="center" style={{width: 'auto', height: 'auto'}}>
+      <div className="cards__item" align="center" style={{ width: 'auto', height: 'auto' }}>
         {/* <h1 className='payment-name'>Card</h1> */}
-        <form className='payment-container' align='center' style={{width: '600px', height: '100%'}} >
+        <div className='payment-container' align='center' style={{ width: '600px', height: '100%' }} >
           <label htmlFor='card-element'>Card</label>
           <h4>Please enter the information below.</h4>
+          <div>
+            <StripeCheckout
+              stripeKey="pk_test_51LA0u0KbdjY7fQwQpspCWOmeYN2eMh6gPyBaRbyVmdpTNVFWaYVsmGhedXhuu8kXxYTwikzH2WmE1iovEw06ZWoE005wG4jewt"
+              token={handleToken}
+              amount={prodInCart.price * 100}
+              name={prodInCart.name}
+              billingAddress
+              shippingAddress 
+              />
+          </div>
 
-
-          <StripeContainer />
-
+          {/* <StripeContainer />
+          <button><img alt='stripe logo' src={StripeLogo} width='200' height='100' /></button> */}
 
           {/* <CardElement /> */}
           {/* <span class="payment-errors"></span>
@@ -51,7 +77,7 @@ function Checkout() {
           <button type="submit" className='form-button' align='center' >Submit Payment</button> */}
 
           {/* <button className='form-button' >Pay</button> */}
-        </form>
+        </div>
       </div>
     </div>
   )

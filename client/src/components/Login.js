@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
-function Login({ setUser, user, isAuthenticated, setIsAuthenticated, cart, setCart, setLoggedIn, loggedIn }) {
+function Login({ setUser, user, setIsAuthenticated, cart, setCart, setLoggedIn, loggedIn, cartProds, setCartProds }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
     const navigate = useNavigate()
-    // console.log(navigate)
-
     function handleSubmit(e) {
         e.preventDefault();
         console.log("hey");
+        // handleLogin
         fetch("/login", {
             method: "POST",
             headers: {
@@ -23,11 +23,12 @@ function Login({ setUser, user, isAuthenticated, setIsAuthenticated, cart, setCa
                 if (res.ok) {
                     res.json()
                         .then(user => {
-                            setUser(user)
+                            setUser(user) 
                             setIsAuthenticated(true)
-                            setCart(cart)
+                            // setCart(cart)
+                            setCartProds(cartProds)
                             setLoggedIn(true)
-                            // navigate("/")
+                            navigate("/cart")
                         })
                     // navigate.push("/")
                 } else {
@@ -39,8 +40,8 @@ function Login({ setUser, user, isAuthenticated, setIsAuthenticated, cart, setCa
             // navigate.push('/')
             )
     }
-    console.log("Logged in?", loggedIn)
-    console.log("User:", user)
+    // console.log("Logged in?", loggedIn)
+    // console.log("User:", user)
 
     return (
         <div align="center" >
@@ -75,7 +76,7 @@ function Login({ setUser, user, isAuthenticated, setIsAuthenticated, cart, setCa
                     {/* onClick={() => navigate('/')} */}
                 </div>
                 <br></br>
-                <label style={{ fontSize: "20px", padding: "0px" }}> Don't have an account? </label>
+                <label style={{ fontSize: "20px", padding: "0px" }} disabled={!username || !password}> Don't have an account? </label>
                 <Link to="/create-user">
                     <button className='form-button'>Become a Warrior</button>
                 </Link>

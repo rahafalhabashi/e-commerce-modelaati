@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import ProductsList from './ProductsList';
 
-function Home({user, cart, setCart, products}) {
+function Home({user, cart, setCart, products, setCartProds, cartProds}) {
     const [show, setShow] = useState(true)
 
     // On componentDidMount set the timer
@@ -18,7 +18,7 @@ function Home({user, cart, setCart, products}) {
 
     // If show is false the component will return null and stop here
     if (!show) {
-        return <ProductsList cart={cart} products={products} setCart={setCart} />
+        return <ProductsList user={user} cart={cart} products={products} setCart={setCart} setCartProds={setCartProds} cartProds={cartProds} />
 
         // return null; 
     }

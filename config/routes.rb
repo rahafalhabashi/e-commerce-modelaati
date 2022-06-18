@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   # post "/potato", to: "sessions#cat"
   post "/cartorder", to: "users#userOrder"
   get "/cart", to: "orders#show"
+  get "/totalPrice", to: "users#total_price"
 
   # STRIPE ROUTES
   post "/charges", to: 'charges#create'

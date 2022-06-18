@@ -4,7 +4,7 @@ import Logo from './modelaatilogo.png'
 import {useNavigate} from 'react-router-dom'
 // import Cart from './Cart'
 
-function Navbar({ loggedIn, onLogout, setCart }) {
+function Navbar({ onLogout, setCart }) {
     // const [btnPopup, setBtnPopup] = useState(false)
     const navigate = useNavigate()
 

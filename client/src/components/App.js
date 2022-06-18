@@ -19,14 +19,17 @@ function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const [cartProds, setCartProds] = useState([])
+  const [cartTotal, setCartTotal] = useState("")
+
+  // console.log(cartProds)
 
   //Keeps user logged in
   useEffect(() => {
     fetch("/authorized_user").then((res) => {
       if (res.ok) {
         res.json().then((user) => {
-          setIsAuthenticated(true);
-          setUser(user);
+          setIsAuthenticated(true)
+          setUser(user)
           setLoggedIn(true)
           // setCart()
         });
@@ -37,29 +40,44 @@ function App() {
       .then((res) => res.json())
       .then(products => setProducts(products))
   }, [])
-
+  
   useEffect(() => {
     fetch('/cart')
-      .then((res) => res.json())
-      .then(cartProds => setCartProds(cartProds))
-  }, [cart])
-  // console.log(cartProds)
+      .then((res) => {
+        if (res.ok) {
+          res.json().then(cartProds => setCartProds(cartProds))
+        }
+      })
+  }, [user])
 
   //fetch user cart
-
-  // console.log(products)
   function handleLogin() {
-    setUser(user);
+    setUser(user)
+    // setCart(cartProds)
   }
 
   function handleLogout() {
-    setUser(null);
-    setLoggedIn(false);
+    setUser(null)
+    setLoggedIn(false)
     setCart([])
+    setCartProds([])
   }
 
+  useEffect(() => {
+    fetch('/totalPrice')
+    .then((res) => {
+      if (res.ok) {
+        res.json()
+        .then(cartTotl => setCartTotal(cartTotl))
+      }
+    })  
+    }, [cartProds])
+    
+    // console.log(cartTotal)
+    // console.log('User: ' + JSON.stringify(user))
+    // console.log(loggedIn)
 
-// console.log('user:', user)
+
   return (
     <div className='page'>
       <div>
@@ -70,7 +88,7 @@ function App() {
           setCart={setCart} />
 
         <Routes>
-          <Route path="/*" element={<Home user={user} cart={cart} setCart={setCart} products={products} />} />
+          <Route path="/*" element={<Home user={user} cart={cart} setCart={setCart} products={products} cartProds={cartProds} setCartProds={setCartProds} />} />
           <Route path="login" element={<Login
             error={"Please login!"}
             handleLogin={handleLogin}
@@ -79,14 +97,16 @@ function App() {
             setIsAuthenticated={setIsAuthenticated}
             cart={cart}
             setCart={setCart}
-            setLoggedin={setLoggedIn}
+            setLoggedIn={setLoggedIn}
             loggedIn={loggedIn}
-            user={user} />}
+            user={user} 
+            cartProds={cartProds}
+            setCartProds={setCartProds} />}
           />
           <Route path="create-user" element={<CreateUser />} />
           <Route path="/my-profile" element={<OwnUserProfile isAuthenticated={isAuthenticated} />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/cart" element={<Cart user={user} cartProds={cartProds} setCartProds={setCartProds} cart={cart} setCart={setCart} product={products} />} />
+          <Route path="/checkout" element={<Checkout cartProds={cartProds} />} />
+          <Route path="/cart" element={<Cart user={user} cartProds={cartProds} setCartProds={setCartProds} cart={cart} setCart={setCart} product={products} cartTotalPrice={cartTotal} />} />
         </Routes>
       </div>
     </div>

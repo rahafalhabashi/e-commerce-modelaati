@@ -2,10 +2,10 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 // import Login from './Login'
 
-function Cart({ cart, setCart, cartProds, setCartProds, user }) {
+function Cart({cart, cartProds, setCartProds, user, cartTotalPrice }) {
   // const [showCart, setShowCart] = useState(false)
+  // console.log(cart)
   let navigate = useNavigate()
-
 
   function handleCheckout() {
     navigate('/checkout')
@@ -18,21 +18,21 @@ function Cart({ cart, setCart, cartProds, setCartProds, user }) {
         "Content-Type": "application/json"
       }
     })
-      // .then(resp => console.log(resp.json()))
       .then(() => onProdDelete(id))
   }
 
+// console.log(cart)
   function onProdDelete(id) {
     const updatedProds = cartProds.filter(prod => (
       prod.id !== id
     ))
     setCartProds(updatedProds)
-    console.log()
+    // console.log()
   }
 
 
 
-  console.log(cartProds)
+  // console.log(cartProds)
 
   return (
     <div>
@@ -40,10 +40,10 @@ function Cart({ cart, setCart, cartProds, setCartProds, user }) {
         <div>
           <div>
             <h2 align="center" >Cart</h2>
-            {cartProds.map((prod, id) => (
+            {cartProds.map((prod, idx) => (
               // <div className='cards__item'>
-              <div className='cart-card' >
-                <img src={prod.img_url} alt={prod.name} key={prod.id} className='cart-image' ></img>
+              <div className='cart-card' key={idx} >
+                <img src={prod.img_url} alt={prod.name} className='cart-image' ></img>
                 <p>{prod.name}</p>
                 <p>${prod.price}</p>
                 <button className='cart-card-button' align='center' style={{ width: 'auto' }} onClick={() => handleDeleteProd(prod.id)} >remove from cart</button>
@@ -51,7 +51,10 @@ function Cart({ cart, setCart, cartProds, setCartProds, user }) {
               </div>
               // </div>
             ))}
-            <button className="cart-card-button" align="center" onClick={handleCheckout} >Checkout</button>
+            <div align="center">
+              <p> Total: ${cartTotalPrice}.00 </p>
+              <button className="cart-card-button" align="center" onClick={handleCheckout} >Checkout</button>
+            </div>
           </div>
         </div>
         :

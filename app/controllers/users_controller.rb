@@ -1,11 +1,6 @@
 class UsersController < ApplicationController
   # skip_before_action :authorized, only: [:index, :create]
 
-  def index
-    users = User.all
-    render json: users
-  end
-
   def show
     user = User.find_by(id: session[:user_id])
     if user
@@ -20,6 +15,12 @@ class UsersController < ApplicationController
     p = Product.find_by(id: params[:id])
     cp = current_user.cart.products << p
     render json: current_user.cart.products
+  end
+
+  def total_price
+    total = current_user.cart.products.sum(:price)
+    # totalToCurrency = number_to_currency(total, :unit => "R$", :separator => ",", :delimiter => ".")
+    render json: total
   end
 
   def delete_cart_product

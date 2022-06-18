@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_09_140543) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_18_170943) do
   create_table "cart_products", force: :cascade do |t|
     t.integer "cart_id"
     t.integer "product_id"
@@ -52,6 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_09_140543) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "username"
+    t.integer "stripe_user_id"
   end
 
   add_foreign_key "carts", "orders"
