@@ -144,7 +144,7 @@ function CreateUser() {
                     <input type="password" name="password" value={newPassword} onChange={handleNewPassword} required />
                     <br></br>
                     <label>Confirm Password: </label>
-                    <input type="password_confirmation" name="password_confirmation" value={passwordConfirmation} onChange={handlePassConfirmation} required />
+                    <input type="password" name="password_confirmation" value={passwordConfirmation} onChange={handlePassConfirmation} required />
                 </div>
                 <div>
                     <button className='form-button' type="submit" > Create New Account! </button>

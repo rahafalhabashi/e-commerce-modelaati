@@ -1,15 +1,7 @@
 // function FooterStyles() {
 import styled from 'styled-components';
 
-//     export const phantom = {
-//         position: 'fixed',
-//    left: "0",
-//    bottom: "100",
-//    width: "100%",
-//    backgroundColor: 'red',
-//    color: 'white',
-//    textAlign: 'center',
-//       }
+//  
 export const Box = styled.div`
 display: block;
   background-color: rgb(231, 231, 196);
@@ -23,14 +15,6 @@ display: block;
   padding-bottom: 0%;
   position: auto;
   bottom: 0;
-  /* height: 2.5rem;   */
-
-/* padding: 80px 60px;
-    background: black;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    display: block; */
     
     
     @media (max-width: 1000px) {
@@ -44,7 +28,6 @@ export const Container = styled.div`
         justify-content: center;
         max-width: 1000px;
         margin: 0 auto;
-        /* background: red; */
     `
 
 export const Column = styled.div`
@@ -84,8 +67,3 @@ export const Heading = styled.p`
     margin-bottom: 40px;
     font-weight: bold;
     `;
-
-//     return
-// }
-
-// export default FooterStyles

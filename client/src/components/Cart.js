@@ -21,7 +21,7 @@ function Cart({cart, cartProds, setCartProds, user, cartTotalPrice, setCartTotal
   }
 
   function handleDeleteProd(id) {
-    fetch(`/cart_products.${id}`, {
+    fetch(`/cart_products/${id}`, {
       method: 'DELETE',
       header: {
         "Content-Type": "application/json"
@@ -30,18 +30,12 @@ function Cart({cart, cartProds, setCartProds, user, cartTotalPrice, setCartTotal
       .then(() => onProdDelete(id))
   }
 
-// console.log(cart)
   function onProdDelete(id) {
     const updatedProds = cartProds.filter(prod => (
       prod.id !== id
     ))
     setCartProds(updatedProds)
-    // console.log()
   }
-
-
-
-  // console.log(cartProds)
 
   return (
     <div>

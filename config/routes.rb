@@ -17,7 +17,10 @@ Rails.application.routes.draw do
   get "/users", to: "users#index"
   post "/signup", to: "users#create"
 
-  
+  #Update user information
+  patch 'user/update', to: "users#update"
+
+  #cart
   post "/cartorder", to: "users#userOrder"
   get "/cart", to: "orders#show"
   get "/totalPrice", to: "users#total_price"

@@ -73,7 +73,6 @@ function Login({ setUser, user, setIsAuthenticated, cart, setCart, setLoggedIn, 
                 </div>
                 <div>
                     <button className='form-button'>Login</button>
-                    {/* onClick={() => navigate('/')} */}
                 </div>
                 <br></br>
                 <label style={{ fontSize: "20px", padding: "0px" }} disabled={!username || !password}> Don't have an account? </label>

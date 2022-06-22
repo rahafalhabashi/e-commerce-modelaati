@@ -1,5 +1,4 @@
 import '../App.css';
-// import commerce from '../lib/commerce';
 import React, { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './Navbar';
@@ -7,7 +6,6 @@ import Home from './Home';
 import Login from './Login';
 import CreateUser from './CreateUser';
 import OwnUserProfile from './OwnUserProfile';
-// import ProductsList from './ProductsList';
 import Cart from './Cart';
 import Checkout from './Checkout';
 import Footer from './Footer'
@@ -41,7 +39,7 @@ function App() {
       .then((res) => res.json())
       .then(products => setProducts(products))
   }, [])
-  
+
   useEffect(() => {
     fetch('/cart')
       .then((res) => {
@@ -66,17 +64,17 @@ function App() {
 
   useEffect(() => {
     fetch('/totalPrice')
-    .then((res) => {
-      if (res.ok) {
-        res.json()
-        .then(cartTotl => setCartTotal(cartTotl))
-      }
-    })  
-    }, [cartProds])
-    
-    // console.log(cartTotal)
-    // console.log('User: ' + JSON.stringify(user))
-    // console.log(loggedIn)
+      .then((res) => {
+        if (res.ok) {
+          res.json()
+            .then(cartTotl => setCartTotal(cartTotl))
+        }
+      })
+  }, [cartProds])
+
+  // console.log(cartTotal)
+  // console.log('User: ' + JSON.stringify(user))
+  // console.log(loggedIn)
 
 
   return (
@@ -87,9 +85,6 @@ function App() {
           onLogout={handleLogout}
           loggedIn={loggedIn}
           setCart={setCart} />
-
-        
-        
 
         <Routes>
           <Route path="/*" element={<Home user={user} cart={cart} setCart={setCart} products={products} cartProds={cartProds} setCartProds={setCartProds} loggedIn={loggedIn} />} />
@@ -103,16 +98,16 @@ function App() {
             setCart={setCart}
             setLoggedIn={setLoggedIn}
             loggedIn={loggedIn}
-            user={user} 
+            user={user}
             cartProds={cartProds}
             setCartProds={setCartProds} />}
           />
           <Route path="create-user" element={<CreateUser />} />
-          <Route path="/my-profile" element={<OwnUserProfile isAuthenticated={isAuthenticated} />} />
+          <Route path="/profile" element={<OwnUserProfile isAuthenticated={isAuthenticated} user={user} />} />
           <Route path="/checkout" element={<Checkout cartProds={cartProds} />} />
           <Route path="/cart" element={<Cart user={user} cartProds={cartProds} setCartProds={setCartProds} cart={cart} setCart={setCart} product={products} cartTotalPrice={cartTotal} setCartTotal={setCartTotal} />} />
         </Routes>
-<Footer />
+        <Footer />
       </div>
     </div>
   )

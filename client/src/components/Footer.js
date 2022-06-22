@@ -1,6 +1,5 @@
 import React from 'react';
 import footerImg from './MODELAATI-footer-logo.png'
-// import { Link } from 'react-router-dom';
 import {
     Box,
     Container,

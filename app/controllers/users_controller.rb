@@ -34,7 +34,8 @@ class UsersController < ApplicationController
       render json: { error: "product not found" }, status: 404
     end
   end
-# attribute of instance im finding by: params[:]
+
+  # attribute of instance im finding by: params[:]
   def create
     user = User.create!(user_params)
     if user
@@ -44,6 +45,7 @@ class UsersController < ApplicationController
     end
   end
 
+  #update user Information
   def update
     user = User.find(params[:id])
     if user.update!(user_params)
