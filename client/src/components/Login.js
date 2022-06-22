@@ -44,7 +44,7 @@ function Login({ setUser, user, setIsAuthenticated, cart, setCart, setLoggedIn, 
     // console.log("User:", user)
 
     return (
-        <div align="center" >
+        <div align="center" style={{height: "100%"}} >
             {user ? 
             <h2 style={{ color: 'black', lineHeight: .5, padding: 1, fontWeight: 'bold', fontStyle: 'italic' }}>{`${user.name} is logged in`}</h2>            
                 // <p >{loggedIn ? `${user.name} logged in` : "Not logged in"}</p>
