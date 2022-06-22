@@ -26,13 +26,8 @@ function Navbar({ onLogout, setCart }) {
                 <button className='nav-button' onClick={handleLogout} >Logout</button>
                 {/* <Link to="/Shop"><button className='nav-button'>Shop</button></Link> */}
                 <button className='nav-button' onClick={() => navigate('/cart')} >Cart</button>
-                {/* onClick={() => setBtnPopup(true)} */}
-                
-                {/* // trigger={btnPopup} setTrigger={setBtnPopup} */}
-                {/* > */}
-                    <h1>My Cart</h1>
-                    {/* {cart.cart_products}  */}
-               
+                <Link to="/Profile"><button className='nav-button'>Profile</button></Link>
+                    <h1>My Cart</h1>               
             </div>
         </div>
     )

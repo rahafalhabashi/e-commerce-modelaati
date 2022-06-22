@@ -8,7 +8,7 @@ function Login({ setUser, user, setIsAuthenticated, cart, setCart, setLoggedIn, 
     const [error, setError] = useState("");
 
     const navigate = useNavigate()
-    function handleSubmit(e) {
+    function handleLoginSubmit(e) {
         e.preventDefault();
         console.log("hey");
         // handleLogin
@@ -28,7 +28,7 @@ function Login({ setUser, user, setIsAuthenticated, cart, setCart, setLoggedIn, 
                             // setCart(cart)
                             setCartProds(cartProds)
                             setLoggedIn(true)
-                            navigate("/cart")
+                            navigate("/")
                         })
                     // navigate.push("/")
                 } else {
@@ -49,7 +49,7 @@ function Login({ setUser, user, setIsAuthenticated, cart, setCart, setLoggedIn, 
             <h2 style={{ color: 'black', lineHeight: .5, padding: 1, fontWeight: 'bold', fontStyle: 'italic' }}>{`${user.name} is logged in`}</h2>            
                 // <p >{loggedIn ? `${user.name} logged in` : "Not logged in"}</p>
             :
-            <form className='form-container' onSubmit={handleSubmit}>
+            <form className='form-container' onSubmit={handleLoginSubmit}>
                 <h1 className='form-name'>Please login below.</h1>
                 <br></br>
                 <div className='inputs'>

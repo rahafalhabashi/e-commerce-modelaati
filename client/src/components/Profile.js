@@ -2,15 +2,13 @@ import React from 'react'
 // import {Routes, Route, Link } from 'react-router-dom'
 // import OwnUserProfile from "./OwnUserProfile"
 
-function Profile() {
+function Profile({ user }) {
   return (
     <div>
-        {/* <nav>
-            <Link to='/me'>My Profile</Link>
-        </nav>
-        <Routes>
-            <Route path="me" element={<OwnUserProfile/>} />
-        </Routes> */}
+        <form>
+          Name:
+          <input type="text" name="name" value={user.name}>{user.name} </input>
+        </form>
     </div>
   )
 }

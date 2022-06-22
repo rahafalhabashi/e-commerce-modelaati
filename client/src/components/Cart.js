@@ -2,17 +2,26 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 // import Login from './Login'
 
-function Cart({cart, cartProds, setCartProds, user, cartTotalPrice }) {
+function Cart({cart, cartProds, setCartProds, user, cartTotalPrice, setCartTotal }) {
   // const [showCart, setShowCart] = useState(false)
   // console.log(cart)
   let navigate = useNavigate()
 
   function handleCheckout() {
-    navigate('/checkout')
+    navigate(`/checkout`)
+    fetch(`/checkout`, {
+      method: 'PATCH',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({checked_out: false})
+    })
+    .then(res => res.json())
+    .then(prod => console.log(prod))
+    setCartProds([])
+    setCartTotal(' ')
   }
 
   function handleDeleteProd(id) {
-    fetch(`/cart_products/${id}`, {
+    fetch(`/cart_products.${id}`, {
       method: 'DELETE',
       header: {
         "Content-Type": "application/json"

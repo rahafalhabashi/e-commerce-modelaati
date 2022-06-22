@@ -37,15 +37,15 @@ function ProductItem({ user, product, setCart, setCartProds }) {
     return (
         <div className="cards__item">
             <div className='cards'>
+                {/* <div className="product__card"> */}
                 <img className="product__image" src={product.img_url} alt={product.name} />
-                <div className="product__card">
                     <div className="product__info">
                         <h4 className="product__name">{product.name}</h4>
                         <p className="product__description">
                             {/* product description stripped of html tags */}
                             {/* {product.description} */}
                         </p>
-                        <div className="product__details">
+                        {/* <div className="product__details"> */}
                             <p className="product__price">
                                 ${product.price}
                             </p>
@@ -54,9 +54,9 @@ function ProductItem({ user, product, setCart, setCartProds }) {
                             :
                             <button onClick={handleAddToCart} className={'form-button'} >Add to Cart</button>
 }
-                        </div>
+                        {/* </div> */}
                     </div>
-                </div>
+                {/* </div> */}
             </div>
         </div>
     )

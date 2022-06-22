@@ -4,25 +4,10 @@ class OrdersController < ApplicationController
     render json: orders
   end
 
-  # def
-    
-
   def show
     # debugger
     render json: current_user.cart.products
-    
-    # order = Order.find_by(id: session[:user_id], checked_out: false)
-    # if order
-    #   render json: order.products
-    # else
-    #   o = Order.create(checked_out: false, user_id: session[:user_id])
-    #   Cart.create(params[order_id: o.id])
-    #   render json: o 
-    # else
-    #   render json: { error: "No cart associated." }, status: :unauthorized
-    # end
   end
-
 
   def cart_prods
     if (order[checked_out: false])
@@ -32,6 +17,28 @@ class OrdersController < ApplicationController
       order = Order.create(order_params)
       render json: order.cart.products
     end
+  end
+
+  def checkout
+    co = current_user.order
+    co_order = co.update!(:checked_out => true)
+    render json: co_order
+  end
+
+  #Stripe Controller Methods:
+  
+  # Token is created using Stripe Checkout or Elements!
+  # Get the payment token ID submitted by the form:
+  
+  def charge
+    Stripe.api_key = "sk_test_51LA0u0KbdjY7fQwQnb9aTxwAsIJwSJMTMGKFMO2bh8CTrCuptivI5i7r6akPsiI4j3B1Udp2uo1c3WrqRBYoFwsh00Mc1hy9dO"
+    token = params[:stripeToken]
+    charge = Stripe::Charge.create({
+      amount: 999,
+      currency: "usd",
+      description: "Example charge",
+      source: token,
+    })
   end
 
   private

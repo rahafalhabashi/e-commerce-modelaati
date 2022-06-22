@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :registrations, only: [:create]
   resources :carts, only: [:index, :show]
   resources :cart_products, only: [:index]
+  resources :orders, only: [:create]
 
   # delete :logout, to: "sessions#logout"
   # get :loggedIn, to: "sessions#loggedIn"
@@ -16,16 +17,18 @@ Rails.application.routes.draw do
   get "/users", to: "users#index"
   post "/signup", to: "users#create"
 
-  # post "/potato", to: "sessions#cat"
+  
   post "/cartorder", to: "users#userOrder"
   get "/cart", to: "orders#show"
   get "/totalPrice", to: "users#total_price"
-
+  
   # STRIPE ROUTES
-  post "/charges", to: 'charges#create'
-
+  post "/charges", to: "charges#create"
+  
   # Products
   delete "/cart_products/:id", to: "users#delete_cart_product"
   # get "/products", to: "products#index"
-
+  patch "/checkout", to: "orders#checkout"
+  #Stripe Controllers
+  post "/charge", to: "orders#charge"
 end

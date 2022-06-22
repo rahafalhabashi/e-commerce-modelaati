@@ -10,6 +10,7 @@ import OwnUserProfile from './OwnUserProfile';
 // import ProductsList from './ProductsList';
 import Cart from './Cart';
 import Checkout from './Checkout';
+import Footer from './Footer'
 
 function App() {
   const [user, setUser] = useState(null);
@@ -87,8 +88,11 @@ function App() {
           loggedIn={loggedIn}
           setCart={setCart} />
 
+        
+        
+
         <Routes>
-          <Route path="/*" element={<Home user={user} cart={cart} setCart={setCart} products={products} cartProds={cartProds} setCartProds={setCartProds} />} />
+          <Route path="/*" element={<Home user={user} cart={cart} setCart={setCart} products={products} cartProds={cartProds} setCartProds={setCartProds} loggedIn={loggedIn} />} />
           <Route path="login" element={<Login
             error={"Please login!"}
             handleLogin={handleLogin}
@@ -106,8 +110,9 @@ function App() {
           <Route path="create-user" element={<CreateUser />} />
           <Route path="/my-profile" element={<OwnUserProfile isAuthenticated={isAuthenticated} />} />
           <Route path="/checkout" element={<Checkout cartProds={cartProds} />} />
-          <Route path="/cart" element={<Cart user={user} cartProds={cartProds} setCartProds={setCartProds} cart={cart} setCart={setCart} product={products} cartTotalPrice={cartTotal} />} />
+          <Route path="/cart" element={<Cart user={user} cartProds={cartProds} setCartProds={setCartProds} cart={cart} setCart={setCart} product={products} cartTotalPrice={cartTotal} setCartTotal={setCartTotal} />} />
         </Routes>
+<Footer />
       </div>
     </div>
   )

@@ -5,7 +5,7 @@ import './index.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 
-//Stripe Stuff
+//Stripe Stuff - Last tutorial (indian guy)
 // const express = require('express')
 // const bodyparser = require('boddyparser');
 // const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
@@ -69,6 +69,11 @@ import reportWebVitals from './reportWebVitals';
 // })
 
 // res.json({ error, status });
+
+
+
+
+//Other tutorial
 
 //  const app = express();
 // require("dotenv").config()
